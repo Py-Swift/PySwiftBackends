@@ -20,6 +20,7 @@ class Admob4KivyBackend(PSBackend):
         pass
     
     def packages(self) -> dict:
+        print("adding a4k_pyswift package")
         return {
             "KivyLauncher": {
                 "url": "https://github.com/KivySwiftPackages/a4k_pyswift",

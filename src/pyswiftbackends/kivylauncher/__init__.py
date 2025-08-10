@@ -5,8 +5,11 @@ from importlib.util import spec_from_file_location
 
 class KivyLauncherBackend(SDL2Backend):
     
+    def __init__(self):
+        super().__init__()
     
     def packages(self) -> dict:
+        print("adding KivyLauncher")
         return {
             "KivyLauncher": {
                 "url": "https://github.com/KivySwiftPackages/KivyLauncher",
