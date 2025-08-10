@@ -23,6 +23,7 @@ class Admob4KivyBackend(PSBackend):
         return {
             "KivyLauncher": {
                 "url": "https://github.com/KivySwiftPackages/a4k_pyswift",
+                "branch": "master"
             }
         }
     
