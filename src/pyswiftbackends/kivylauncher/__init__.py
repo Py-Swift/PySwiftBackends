@@ -9,7 +9,8 @@ class KivyLauncherBackend(SDL2Backend):
     def packages(self) -> dict:
         return {
             "KivyLauncher": {
-                "path": "/Volumes/CodeSSD/beeware_env/swift_packages/KivyLauncher",
+                "url": "https://github.com/KivySwiftPackages/KivyLauncher",
+                "branch": "master"
             }
         }
     
