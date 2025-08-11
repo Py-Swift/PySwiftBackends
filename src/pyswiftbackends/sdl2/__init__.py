@@ -47,5 +47,8 @@ class SDL2Backend(PSBackend):
             "-t", str(support + sdl2_frameworks)
             ])
         
+    def wrapper_imports(self, target_type: str) -> list[dict[str, object]]:
+        return []
+        
         
 backend = SDL2Backend()

@@ -9,7 +9,7 @@ class KivyLauncherBackend(SDL2Backend):
         super().__init__()
     
     def packages(self) -> dict:
-        print("adding KivyLauncher")
+        print("adding KivyLauncher packages")
         return {
             "KivyLauncher": {
                 "url": "https://github.com/KivySwiftPackages/KivyLauncher",
@@ -24,5 +24,7 @@ class KivyLauncherBackend(SDL2Backend):
         )
         
         return deps
+    
+    
     
 backend = KivyLauncherBackend()
