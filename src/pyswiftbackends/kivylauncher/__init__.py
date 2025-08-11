@@ -3,6 +3,20 @@ from ..sdl2 import SDL2Backend
 import pip
 from importlib.util import spec_from_file_location
 
+
+
+pre_main_swift = """
+KivyLauncher.pyswiftImports = [
+    {modules}
+]
+"""
+
+main_swift = """
+exit(
+    KivyLauncher.SDLmain()
+)
+"""
+
 class KivyLauncherBackend(SDL2Backend):
     
     def packages(self) -> dict:
@@ -31,19 +45,10 @@ class KivyLauncherBackend(SDL2Backend):
         ]
     
     def pre_main_swift(self, libraries: list[str], modules: list[str]) -> str | None:
-        _modules = ",\n\t".join(modules)
-        return f"""
-KivyLauncher.pyswiftImports = [
-    {_modules}    
-]
-        """
+        return pre_main_swift.format(modules=",\n\t".join(modules))
     
     def main_swift(self, libraries: list[str], modules: list[str]) -> str | None:
-        return """
-exit(
-    KivyLauncher.SDLmain()
-)
-        """
+        return main_swift
     
     
     
