@@ -1,14 +1,10 @@
-from backend_tools import FilePath, PSBackend
+from backend_tools import FilePath
+from ..standard_backend import StandardBackend
 import pip
 
 
-class SDL2Backend(PSBackend):
+class SDL2Backend(StandardBackend):
     
-    def __init__(self):
-        super().__init__(self)
-    
-    def url(self) -> str | None:
-        return None
     
     def frameworks(self) -> list[FilePath]:
         sdl2_fw = FilePath.ps_support() + "sdl2_frameworks" # type: ignore
@@ -20,14 +16,6 @@ class SDL2Backend(PSBackend):
             (sdl2_fw + "SDL2_ttf.xcframework")
         ]
         
-    def downloads(self) -> list[str]:
-        return []
-    
-    def config(self, root: FilePath):
-        pass
-    
-    def packages(self) -> dict:
-        return {}
     
     def target_dependencies(self, target_type: str) -> list[dict[str, object]]:
         return [
@@ -47,8 +35,6 @@ class SDL2Backend(PSBackend):
             "-t", str(support + sdl2_frameworks)
             ])
         
-    def wrapper_imports(self, target_type: str) -> list[dict[str, object]]:
-        return []
         
         
 backend = SDL2Backend()
