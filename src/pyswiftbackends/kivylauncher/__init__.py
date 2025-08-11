@@ -32,16 +32,13 @@ class KivyLauncherBackend(SDL2Backend):
     
     def pre_main_swift(self, libraries: list[str], modules: list[str]) -> str | None:
         _modules = ",\n\t".join(modules)
-        return f"""
-        KivyLauncher.pyswiftImports = [
+        return f"""KivyLauncher.pyswiftImports = [
             {_modules}
         ]
         """
     
     def main_swift(self, libraries: list[str], modules: list[str]) -> str | None:
-        return """
-
-        exit(
+        return """exit(
             KivyLauncher.SDLmain()
         )
         """
