@@ -20,7 +20,7 @@ class PyCoreBluetoothBackend(PSBackend):
         pass
     
     def packages(self) -> dict:
-        print("adding a4k_pyswift package")
+        print("adding PyCoreBluetooth package")
         return {
             "PyCoreBluetooth": {
                 "url": "https://github.com/KivySwiftPackages/PyCoreBluetooth",
@@ -37,7 +37,7 @@ class PyCoreBluetoothBackend(PSBackend):
         return [
             {
                 "libraries": ["PyCoreBluetooth"],
-                "modules": [".pycorebluetooth"]
+                "modules": [".py_corebluetooth"]
             }
         ]
     
