@@ -23,8 +23,10 @@ class StandardBackend(PSBackend):
         return {}
     
     def target_dependencies(self, target_type: str) -> list[dict[str, object]]:
-        return [
-        ]
+        return []
+        
+    def plist_entries(self, plist: dict[str, object], target_type: str):
+        pass
     
     
     def install(self, support: FilePath):

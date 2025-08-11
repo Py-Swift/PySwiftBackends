@@ -5,6 +5,8 @@ from importlib.util import spec_from_file_location
 
 class PyCoreBluetoothBackend(StandardBackend):
     
+    def plist_entries(self, plist: dict[str, object], target_type: str):
+        pass
     
     def packages(self) -> dict:
         print("adding PyCoreBluetooth package")
