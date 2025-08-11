@@ -28,8 +28,6 @@ class PyCoreBluetoothBackend(StandardBackend):
             }
         ]
         
-    def pre_main_swift(self, libraries: list[str], modules: list[str]) -> str | None:
-        return "launchAdmob()"
-        
+    
     
 backend = PyCoreBluetoothBackend()

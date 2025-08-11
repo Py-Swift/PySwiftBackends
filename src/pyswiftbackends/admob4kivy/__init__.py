@@ -28,9 +28,7 @@ class Admob4KivyBackend(StandardBackend):
         ]
         
     def pre_main_swift(self, libraries: list[str], modules: list[str]) -> str | None:
-        pass
-    
-    def main_swift(self, libraries: list[str], modules: list[str]) -> str | None:
-        pass
+        return "try launchAdmob()"
+        
     
 backend = Admob4KivyBackend()
