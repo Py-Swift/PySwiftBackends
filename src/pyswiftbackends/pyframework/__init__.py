@@ -2,6 +2,8 @@ from backend_tools import FilePath
 from ..standard_backend import StandardBackend
 from urllib.request import urlretrieve
 import tarfile
+import shutil
+import os
 
 class PyFrameworkBackend(StandardBackend):
     
@@ -26,12 +28,12 @@ class PyFrameworkBackend(StandardBackend):
         support = FilePath.ps_support()
         py_fw  = support + "Python.xcframework" # type: ignore
         filename = f"Python-{ver}-iOS-support.{sub}.tar.gz"
-        py_fw_tar = support + filename # type: ignore
+        py_fw_tar = str(support + filename) # type: ignore
         
         if not py_fw.exists:
             url = f"https://github.com/beeware/Python-Apple-support/releases/download/{ver}-{sub}/Python-{ver}-iOS-support.{sub}.tar.gz"
-            self.download_file(url, str(support))
+            self.download_file(url, py_fw_tar)
             self.untar_file(py_fw_tar, str(support))
-        
+            os.remove(py_fw_tar)
         
 backend = PyFrameworkBackend()
