@@ -28,11 +28,11 @@ class SDL2Backend(StandardBackend):
     
     def install(self, support: FilePath):
         
-        sdl2_frameworks = FilePath.ps_support + "sdl2_frameworks" # type: ignore
+        sdl2_frameworks = FilePath.ps_support() + "sdl2_frameworks" # type: ignore
         pip.main([
             "install", "kivy_sdl2", 
             "--extra-index-url", "https://pypi.anaconda.org/pyswift/simple",
-            "-t", str(support + sdl2_frameworks)
+            "-t", str(sdl2_frameworks)
             ])
         
         
