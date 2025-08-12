@@ -34,7 +34,7 @@ class SDL2Backend(StandardBackend):
                 "install", "kivy_sdl2", 
                 "--extra-index-url", "https://pypi.anaconda.org/pyswift/simple",
                 "-t", str(sdl2_frameworks)
-            ])
+                ])
         
         
         
