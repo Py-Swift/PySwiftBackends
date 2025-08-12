@@ -1,8 +1,5 @@
 from backend_tools import FilePath
 from ..standard_backend import StandardBackend
-from urllib.request import urlretrieve
-import tarfile
-import shutil
 import os
 
 class PyFrameworkBackend(StandardBackend):
