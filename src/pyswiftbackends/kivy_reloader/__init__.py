@@ -8,22 +8,7 @@ import shutil
 
 
 class KivyReloaderBackend(StandardBackend):
-            
-    def __copy_to_site_packages(self, site_path: FilePath):
-        tmp = tempfile.TemporaryDirectory()
-        pip.main([
-            "install", "kivy-reloader",
-            "-t", str(tmp)
-            ])
-        
-        # delete what is needed from tmp
-        for folder in os.listdir(str(tmp)):
-            if folder.lower() in ["kaki", "watchdog", "psutil"]:
-                shutil.rmtree(os.path.join(str(tmp), folder))
-        # copy rest of tmp to site_path
-        for folder in os.listdir(str(tmp)):
-            shutil.copytree(str(tmp), str(site_path))
-            
+
     def copy_to_site_packages(self, site_path: FilePath):
         with tempfile.TemporaryDirectory() as tmp:
             tmp_path = str(tmp)
@@ -39,10 +24,12 @@ class KivyReloaderBackend(StandardBackend):
             pyproject = self.load_pyproject_toml(pyp_path)
             
             deps: list[str] = pyproject["project"]["dependencies"] # type: ignore
+            
             deps_copy = deps[:]
             to_remove = [
                 "cython", "buildozer", "kaki", "pip", "psutil", "toml"
             ]
+            
             for dep in deps_copy:
                 for rm in to_remove:
                     if dep.startswith(rm):
