@@ -43,6 +43,9 @@ class StandardBackend(PSBackend):
     def main_swift(self, libraries: list[str], modules: list[str]) -> str | None:
         pass
     
+    def copy_to_site_packages(self, site_path: FilePath):
+        pass
+    
     
     
     def download_file(self, url: str, save_path: str):

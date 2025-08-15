@@ -3,6 +3,12 @@ from ..standard_backend import StandardBackend
 import pip
 from importlib.util import spec_from_file_location
 
+
+pre_main_swift = """
+KivyLauncher.Env.A4K_BACKEND = "pyswift"
+try launchAdmob()
+"""
+
 class Admob4KivyBackend(StandardBackend):
     
     def plist_entries(self, plist: dict[str, object], target_type: str):
@@ -84,7 +90,7 @@ class Admob4KivyBackend(StandardBackend):
         ]
         
     def pre_main_swift(self, libraries: list[str], modules: list[str]) -> str | None:
-        return "try launchAdmob()"
+        return pre_main_swift
         
     
 backend = Admob4KivyBackend()
