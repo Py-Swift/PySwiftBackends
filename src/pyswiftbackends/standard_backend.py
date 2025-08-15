@@ -6,6 +6,8 @@ import zipfile
 import toml
 import sh
 
+pip3 = sh.Command("/Users/Shared/psproject/hostpython3/bin/pip3")
+
 class StandardBackend(PSBackend):
     
     def __init__(self):
