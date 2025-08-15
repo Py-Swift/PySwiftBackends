@@ -1,5 +1,5 @@
 from backend_tools import FilePath
-from ..standard_backend import StandardBackend
+from ..standard_backend import StandardBackend, pip3
 import os
 from os.path import join
 import pip
@@ -51,10 +51,12 @@ class KivyReloaderBackend(StandardBackend):
                         continue
             
             self.save_pyproject_toml(pyproject, pyp_path)
-            pip.main([
-            "install", reloader_path,
-            "-t", str(site_path)
-            ])
+            pip3("install", reloader_path,
+            "-t", str(site_path))
+            # pip.main([
+            # "install", reloader_path,
+            # "-t", str(site_path)
+            # ])
             
             
         

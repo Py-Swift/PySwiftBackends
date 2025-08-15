@@ -4,6 +4,7 @@ import requests
 import tarfile
 import zipfile
 import toml
+import sh
 
 class StandardBackend(PSBackend):
     
