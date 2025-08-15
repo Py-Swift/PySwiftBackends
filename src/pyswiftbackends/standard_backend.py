@@ -51,7 +51,11 @@ class StandardBackend(PSBackend):
     def copy_to_site_packages(self, site_path: FilePath):
         pass
     
+    def pip_install(self, *args: str):
+        print(pip3("install", *args))
     
+    def pip_download(self, *args: str):
+        print(pip3("download", *args))
     
     def download_file(self, url: str, save_path: str):
         try:

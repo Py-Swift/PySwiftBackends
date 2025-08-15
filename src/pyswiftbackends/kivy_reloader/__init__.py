@@ -26,7 +26,6 @@ class KivyReloaderBackend(StandardBackend):
             
     def copy_to_site_packages(self, site_path: FilePath):
         with tempfile.TemporaryDirectory() as tmp:
-            #tmp = tempfile.TemporaryDirectory()
             tmp_path = str(tmp)
             self.download_file(
                 "https://github.com/kivy-school/kivy-reloader/archive/refs/heads/main.zip",
@@ -34,7 +33,7 @@ class KivyReloaderBackend(StandardBackend):
             )
             
             self.unzip_file(join(tmp_path, "main.zip"), tmp_path)
-            print(os.listdir(tmp_path))
+            
             reloader_path = join(tmp_path, "kivy-reloader-main")
             pyp_path = join(reloader_path, "pyproject.toml")
             pyproject = self.load_pyproject_toml(pyp_path)
@@ -51,12 +50,8 @@ class KivyReloaderBackend(StandardBackend):
                         continue
             
             self.save_pyproject_toml(pyproject, pyp_path)
-            pip3("install", reloader_path,
-            "-t", str(site_path))
-            # pip.main([
-            # "install", reloader_path,
-            # "-t", str(site_path)
-            # ])
+            
+            self.pip_install(reloader_path, "-t", str(site_path))
             
             
         
