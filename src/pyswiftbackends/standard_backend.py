@@ -2,6 +2,8 @@ from backend_tools import FilePath, PSBackend
 import pip
 import requests
 import tarfile
+import zipfile
+import toml
 
 class StandardBackend(PSBackend):
     
@@ -67,3 +69,15 @@ class StandardBackend(PSBackend):
     def untar_file(self, file: str, destination: str, keep_tar: bool = False):
         with tarfile.open(file) as tar:
             tar.extractall(destination)
+            
+    def unzip_file(self, file: str, destination: str, keep_zip: bool = False):
+        z =  zipfile.ZipFile(file)
+        z.extractall(destination)
+            
+    def load_pyproject_toml(self, path: str) -> dict[str, object]:
+        with open(path, "r") as fp:
+            return toml.load(fp)
+        
+    def save_pyproject_toml(self, obj: dict[str, object], path: str):
+        with open(path, "w") as fp:
+            toml.dump(obj, fp)
