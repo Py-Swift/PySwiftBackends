@@ -11,7 +11,10 @@ pip3 = sh.Command("/Users/Shared/psproject/hostpython3/bin/pip3")
 class StandardBackend(PSBackend):
     
     def __init__(self):
+        # pass self so swift side can access py side of the class
         super().__init__(self)
+        
+    # Swift Abstract functions being called
     
     def url(self) -> str | None:
         return None
@@ -50,6 +53,8 @@ class StandardBackend(PSBackend):
     
     def copy_to_site_packages(self, site_path: FilePath):
         pass
+    
+    # internal usage
     
     def pip_install(self, *args: str):
         print(pip3("install", *args))
