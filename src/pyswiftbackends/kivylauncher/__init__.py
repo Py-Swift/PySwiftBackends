@@ -46,6 +46,8 @@ class KivyLauncherBackend(SDL2Backend):
     
     def copy_to_site_packages(self, site_path: FilePath):
         self.pip_install("ios", "--extra-index-url", "https://pypi.anaconda.org/pyswift/simple", "--target", str(site_path))
+        self.pip_install("pyobjus", "--extra-index-url", "https://pypi.anaconda.org/pyswift/simple", "--target", str(site_path))
+
     
     def pre_main_swift(self, libraries: list[str], modules: list[str]) -> str | None:
         return pre_main_swift.format(modules=",\n\t".join(modules))
