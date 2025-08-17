@@ -51,8 +51,6 @@ class KivyLauncherBackend(SDL2Backend):
         pips = [
             "ios", "pyobjus"
         ]
-        site_str = str(site_path)
-        if site_str.endswith("iphoneos")
         for pip in pips:
             self.pip_install(
                 pip,

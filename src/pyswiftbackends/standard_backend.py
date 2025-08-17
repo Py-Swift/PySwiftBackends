@@ -12,7 +12,7 @@ class StandardBackend(PSBackend):
     
     def __init__(self):
         # pass self so swift side can access py side of the class
-        super().__init__(self)
+        super().__init__(self) # type: ignore
         
     # Swift Abstract functions being called
     
@@ -34,8 +34,9 @@ class StandardBackend(PSBackend):
     def target_dependencies(self, target_type: str) -> list[dict[str, object]]:
         return []
         
-    def plist_entries(self, plist: dict[str, object], target_type: str):
+    def plist_entries(self, plist: object, target_type):
         pass
+    
     
     
     def install(self, support: FilePath):
@@ -53,6 +54,16 @@ class StandardBackend(PSBackend):
     
     def copy_to_site_packages(self, site_path: FilePath, platform: str):
         pass
+    
+    def will_modify_pyproject(self) -> bool:
+        return False
+
+    def modify_pyproject(self, path: "FilePath"):
+        pass
+    
+    def exclude_dependencies(self) -> list[str]:
+        return []
+    
     
     # internal usage
     

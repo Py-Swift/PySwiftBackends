@@ -23,8 +23,10 @@ build-backend = "uv_build"
 [tool.uv.sources]
 backend-tools = { git = "https://github.com/Py-Swift/PSBackend" }
 
+# they are automatic included when uv sync, and need to specify --no-dev to exclude them
+# which psproject export part will add from now on...
 [dependency-groups]
 dev = [
-    "backend-tools",
+    "backend-tools>=0.1.1",
     "pip>=25.2",
 ]
