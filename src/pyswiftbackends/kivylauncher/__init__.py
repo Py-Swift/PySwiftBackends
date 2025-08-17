@@ -57,7 +57,6 @@ class KivyLauncherBackend(SDL2Backend):
                 "--disable-pip-version-check",
                 f"--platform={platform}",
                 "--only-binary=:all:",
-                "--extra-index-url",
                 "--extra-index-url", "https://pypi.anaconda.org/pyswift/simple", 
                 "--target", str(site_path)
             )
