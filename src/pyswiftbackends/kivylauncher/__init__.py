@@ -1,4 +1,5 @@
-from backend_tools import FilePath
+from backend_tools import CodeBlock, FilePath
+from ..standard_backend import CodePriority
 from ..sdl2 import SDL2Backend
 import pip
 from importlib.util import spec_from_file_location
@@ -12,11 +13,12 @@ KivyLauncher.pyswiftImports = [
 """
 
 main_swift = """
-exit(
-    KivyLauncher.SDLmain()
-)
+let exit_status = KivyLauncher.SDLmain()
 """
 
+on_exit = """
+exit(exit_status)
+"""
 
 
 class KivyLauncherBackend(SDL2Backend):
@@ -60,13 +62,25 @@ class KivyLauncherBackend(SDL2Backend):
                 "--extra-index-url", "https://pypi.anaconda.org/pyswift/simple", 
                 "--target", str(site_path)
             )
-        
     
-    def pre_main_swift(self, libraries: list[str], modules: list[str]) -> str | None:
-        return pre_main_swift.format(modules=",\n\t".join(modules))
+    def will_modify_main_swift(self) -> bool:
+        return True
     
-    def main_swift(self, libraries: list[str], modules: list[str]) -> str | None:
-        return main_swift
+    def modify_main_swift(self, libraries: list[str], modules: list[str]) -> list["CodeBlock"]:
+        return [
+            CodeBlock(
+                pre_main_swift.format(modules=",\n\t".join(modules)),
+                CodePriority.POST_IMPORTS
+            ),
+            CodeBlock(
+                main_swift,
+                CodePriority.MAIN
+            ),
+            CodeBlock(
+                on_exit,
+                CodePriority.ON_EXIT
+            )
+        ]
     
     
     

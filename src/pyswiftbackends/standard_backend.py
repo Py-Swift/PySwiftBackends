@@ -1,12 +1,22 @@
-from backend_tools import FilePath, PSBackend
+from backend_tools import FilePath, PSBackend, CodeBlock
 import pip
 import requests
 import tarfile
 import zipfile
 import toml
 import sh
+from enum import IntEnum
 
 pip3 = sh.Command("/Users/Shared/psproject/hostpython3/bin/pip3")
+
+class CodePriority(IntEnum):
+    IMPORTS = 0
+    POST_IMPORTS = 1
+    PRE_MAIN = 2
+    MAIN = 3
+    POST_MAIN = 4
+    ON_EXIT = 5
+    
 
 class StandardBackend(PSBackend):
     
@@ -46,11 +56,11 @@ class StandardBackend(PSBackend):
     def wrapper_imports(self, target_type: str) -> list[dict[str, object]]:
         return []
     
-    def pre_main_swift(self, libraries: list[str], modules: list[str]) -> str | None:
-        pass
-    
-    def main_swift(self, libraries: list[str], modules: list[str]) -> str | None:
-        pass
+    def will_modify_main_swift(self) -> bool:
+        return False
+
+    def modify_main_swift(self, libraries: list[str], modules: list[str]) -> list["CodeBlock"]:
+        return []
     
     def copy_to_site_packages(self, site_path: FilePath, platform: str):
         pass
