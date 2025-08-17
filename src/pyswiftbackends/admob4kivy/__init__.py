@@ -14,7 +14,7 @@ class Admob4KivyBackend(StandardBackend):
     def plist_entries(self, plist: object, target_type):
         if isinstance(plist, dict):
             plist.update({
-                "GADApplicationIdentifier": "ca-app-pub-3940256099942544~3347511713",
+                "GADApplicationIdentifier": "ca-app-pub-3940256099942544~1458002511",
                 "SKAdNetworkItems": [
                     {"SKAdNetworkIdentifier": "cstr6suwn9.skadnetwork"},
                     {"SKAdNetworkIdentifier": "4fzdc2evr5.skadnetwork"},
