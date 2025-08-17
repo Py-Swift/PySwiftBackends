@@ -1,5 +1,5 @@
 from backend_tools import FilePath
-from ..standard_backend import StandardBackend 
+from ..standard_backend import StandardBackend, CodePriority, CodeBlock
 import pip
 from importlib.util import spec_from_file_location
 
@@ -12,7 +12,6 @@ try launchAdmob()
 class Admob4KivyBackend(StandardBackend):
     
     def plist_entries(self, plist: object, target_type):
-        #plist: dict[str, object] = plist # type: ignore
         if isinstance(plist, dict):
             plist.update({
                 "GADApplicationIdentifier": "ca-app-pub-3940256099942544~3347511713",
@@ -89,6 +88,17 @@ class Admob4KivyBackend(StandardBackend):
                 "libraries": ["a4k_pyswift"],
                 "modules": [".a4k_pyswift"]
             }
+        ]
+        
+    def will_modify_main_swift(self) -> bool:
+        return True
+    
+    def modify_main_swift(self, libraries: list[str], modules: list[str]) -> list[CodeBlock]:
+        return [
+            CodeBlock(
+                pre_main_swift,
+                CodePriority.PRE_MAIN
+            )
         ]
         
     def pre_main_swift(self, libraries: list[str], modules: list[str]) -> str | None:
