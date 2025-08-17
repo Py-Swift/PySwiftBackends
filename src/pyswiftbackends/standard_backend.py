@@ -51,7 +51,7 @@ class StandardBackend(PSBackend):
     def main_swift(self, libraries: list[str], modules: list[str]) -> str | None:
         pass
     
-    def copy_to_site_packages(self, site_path: FilePath):
+    def copy_to_site_packages(self, site_path: FilePath, platform: str):
         pass
     
     # internal usage
