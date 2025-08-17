@@ -46,7 +46,7 @@ class KivyLauncherBackend(SDL2Backend):
             }
         ]
     
-    def copy_to_site_packages(self, site_path: FilePath):
+    def copy_to_site_packages(self, site_path: FilePath, platform: str):
         pass
         # pips = [
         #     "ios", "pyobjus"
