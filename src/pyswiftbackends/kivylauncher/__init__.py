@@ -47,22 +47,22 @@ class KivyLauncherBackend(SDL2Backend):
         ]
     
     def copy_to_site_packages(self, site_path: FilePath, platform: str):
-        pass
-        # pips = [
-        #     "ios", "pyobjus"
-        # ]
-        # site_str = str(site_path)
-        # if site_str.endswith("iphoneos")
-        # for pip in pips:
-        #     self.pip_install(
-        #         pip,
-        #         "--disable-pip-version-check",
-        #         "--platform=\(wheel_platform)",
-        #         "--only-binary=:all:",
-        #         "--extra-index-url",
-        #         "--extra-index-url", "https://pypi.anaconda.org/pyswift/simple", 
-        #         "--target", str(site_path)
-        #     )
+        
+        pips = [
+            "ios", "pyobjus"
+        ]
+        site_str = str(site_path)
+        if site_str.endswith("iphoneos")
+        for pip in pips:
+            self.pip_install(
+                pip,
+                "--disable-pip-version-check",
+                f"--platform={platform}",
+                "--only-binary=:all:",
+                "--extra-index-url",
+                "--extra-index-url", "https://pypi.anaconda.org/pyswift/simple", 
+                "--target", str(site_path)
+            )
         
     
     def pre_main_swift(self, libraries: list[str], modules: list[str]) -> str | None:
