@@ -32,7 +32,7 @@ class SDL3Backend(StandardBackend):
     
     def install(self, support: FilePath):
         
-        sdl_frameworks = FilePath.ps_support() + "sdl2_frameworks" # type: ignore
+        sdl_frameworks = FilePath.ps_support() + "sdl3_frameworks" # type: ignore
         if not sdl_frameworks.exists:
             self.pip_install(
                 "kivy_sdl3_angle", 
