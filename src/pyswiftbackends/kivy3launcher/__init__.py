@@ -1,6 +1,6 @@
 from backend_tools import CodeBlock, FilePath
 from ..standard_backend import CodePriority
-from ..sdl2 import SDL2Backend
+from ..sdl3 import SDL3Backend
 import pip
 from importlib.util import spec_from_file_location
 
@@ -21,7 +21,7 @@ exit(exit_status)
 """
 
 
-class Kivy3LauncherBackend(SDL2Backend):
+class Kivy3LauncherBackend(SDL3Backend):
     
     def exclude_dependencies(self) -> list[str]:
         return [
