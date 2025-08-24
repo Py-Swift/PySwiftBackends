@@ -31,7 +31,7 @@ class Kivy3LauncherBackend(SDL3Backend):
     def packages(self) -> dict:
         print("adding KivyLauncher packages")
         return {
-            "KivyLauncher": {
+            "Kivy3Launcher": {
                 "url": "https://github.com/KivySwiftPackages/Kivy3Launcher",
                 "branch": "master"
             }
