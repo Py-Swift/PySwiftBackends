@@ -66,6 +66,8 @@ class Kivy3LauncherBackend(SDL3Backend):
                 "--only-binary=:all:",
                 "--extra-index-url", "https://pypi.anaconda.org/pyswift/simple", 
                 "--extra-index-url", "https://pypi.anaconda.org/beeware/simple",
+                "--extra-index-url", "https://pypi.anaconda.org/kivyschool/simple",
+                "--python-version=313",
                 "--target", str(site_path)
             )
     
