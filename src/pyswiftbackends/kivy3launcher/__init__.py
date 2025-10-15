@@ -61,6 +61,7 @@ class Kivy3LauncherBackend(SDL3Backend):
         for pip in pips:
             self.pip_install(
                 pip,
+                "--upgrade",
                 "--disable-pip-version-check",
                 f"--platform={platform}",
                 "--only-binary=:all:",
