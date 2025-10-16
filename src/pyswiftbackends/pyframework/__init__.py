@@ -4,8 +4,8 @@ import os
 
 class PyFrameworkBackend(StandardBackend):
     
-    version = "3.11"
-    sub_version = "b7"
+    version = "3.13"
+    sub_version = "b11"
     
     def frameworks(self) -> list[FilePath]:
         #py_fw = FilePath.ps_support() + "Python.framework" # type: ignore
